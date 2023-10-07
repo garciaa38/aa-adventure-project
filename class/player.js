@@ -1,4 +1,7 @@
 const { Food } = require('./food');
+const { Item } = require('./item');
+const { Room } = require('./room');
+
 
 class Player {
 
@@ -35,8 +38,18 @@ class Player {
 
     takeItem(itemName) {
         // Picks up an item from the current room into the player's inventory
-
         // Your code here
+
+        let roomItemList = this.currentRoom.items;
+        for (let i = 0; i < roomItemList.length; i++) {
+            let item = roomItemList[i];
+            //console.log(item);
+            if (itemName === item.name) {
+                this.items.push(item);
+                roomItemList.splice(i, 1);
+            }
+        }
+
     }
 
     dropItem(itemName) {
@@ -53,8 +66,18 @@ class Player {
 
     getItemByName(name) {
         // Retrieves an item from a player's inventory by item name
-
         // Your code here
+        for (let i = 0; i < this.items.length; i++) {
+            if (name === this.items[i].name) {
+               let item = this.items[i].name;
+               if (item === name) {
+                //Player.items.push(item);
+                return this.items.splice(this.items.indexOf(item), 1)[0];
+
+            }
+
+            }
+        }
     }
 }
 

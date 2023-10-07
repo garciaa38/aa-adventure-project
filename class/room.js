@@ -1,3 +1,6 @@
+const { Player } = require("./player");
+const { Item } = require('./item');
+
 class Room {
 
     constructor(name, description) {
@@ -45,8 +48,22 @@ class Room {
 
     getItemByName(name) {
         // Retrieves an item from a room by item name
-
         // Your code here
+
+
+        for (let i = 0; i < this.items.length; i++) {
+            if (name === this.items[i].name) {
+               let item = this.items[i].name;
+               if (item === name) {
+                //Player.items.push(item);
+                return this.items.splice(this.items.indexOf(item), 1)[0];
+
+            }
+
+            }
+        }
+
+
     }
 
 }
